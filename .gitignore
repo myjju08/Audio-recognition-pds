@@ -1,0 +1,68 @@
+# Built application files
+*.apk
+*.aar
+*.ap_
+*.aab
+
+# Files for the ART/Dalvik VM
+*.dex
+
+# Java class files
+*.class
+
+# Generated files
+bin/
+gen/
+out/
+build/
+
+# Gradle files
+.gradle/
+gradle/wrapper/gradle-wrapper.jar
+
+# Local configuration file
+local.properties
+
+# Android Studio
+*.iml
+.idea/
+.DS_Store
+
+# NDK
+obj/
+
+# IntelliJ IDEA
+*.iws
+*.ipr
+
+# Keystore files
+*.jks
+*.keystore
+app/earbrief-debug.keystore
+
+# Google Services (contains API keys)
+google-services.json
+
+# External native build folder generated in Android Studio 2.2 and later
+.cxx/
+
+# Secrets
+*.env
+.env.*
+secrets/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Coverage reports
+coverage/
+*.exec
+
+# Firebase config
+firebase-debug.log
+
+# ONNX models (too large for git, use LFS or download at build time)
+# app/src/main/assets/*.onnx
+.kotlin/
+.sisyphus/

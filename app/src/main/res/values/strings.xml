@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">귀띔</string>
+
+    <string name="notification_channel_listening_id">earbrief_listening</string>
+    <string name="notification_channel_listening_name">청취 상태</string>
+    <string name="notification_channel_listening_desc">귀띔 청취 서비스 알림</string>
+
+    <string name="notification_channel_whisper_id">earbrief_whisper</string>
+    <string name="notification_channel_whisper_name">귓속말 알림</string>
+    <string name="notification_channel_whisper_desc">귓속말 히스토리 알림</string>
+
+    <string name="notification_listening_title">🎧 귀띔이 듣고 있어요</string>
+    <string name="notification_listening_body">대화를 분석 중입니다. 탭하여 일시정지</string>
+    <string name="notification_paused_title">⏸ 귀띔 일시정지</string>
+    <string name="notification_paused_body">탭하여 다시 시작</string>
+
+    <string name="action_pause">일시정지</string>
+    <string name="action_resume">재개</string>
+    <string name="action_stop">종료</string>
+
+    <string name="listening_status_on">듣는 중</string>
+    <string name="listening_status_paused">일시정지</string>
+    <string name="listening_status_off">꺼져 있어요</string>
+
+    <string name="permission_mic_title">마이크 권한이 필요해요</string>
+    <string name="permission_mic_rationale">귀띔은 소리를 녹음하지 않고, 실시간으로 분석만 합니다</string>
+    <string name="permission_notification_title">알림 권한이 필요해요</string>
+    <string name="permission_notification_rationale">청취 상태를 알려드리기 위해 알림 권한이 필요합니다</string>
+
+    <string name="nav_home">홈</string>
+    <string name="nav_log">로그</string>
+    <string name="nav_knowledge">지식</string>
+    <string name="nav_profile">프로필</string>
+    <string name="nav_settings">설정</string>
+</resources>
