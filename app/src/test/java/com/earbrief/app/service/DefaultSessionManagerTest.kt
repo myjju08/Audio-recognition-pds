@@ -16,9 +16,7 @@ import org.junit.jupiter.api.Test
 class DefaultSessionManagerTest {
 
     private fun createManager(): DefaultSessionManager {
-        return DefaultSessionManager(
-            scope = CoroutineScope(UnconfinedTestDispatcher())
-        )
+        return DefaultSessionManager()
     }
 
     @Nested

@@ -69,9 +69,7 @@ class MainViewModelTest {
     }
 
     private fun createOrchestrator(): PipelineOrchestrator {
-        return PipelineOrchestrator(
-            scope = CoroutineScope(UnconfinedTestDispatcher())
-        )
+        return PipelineOrchestrator()
     }
 
     private fun createViewModel(orchestrator: PipelineOrchestrator): MainViewModel {

@@ -35,42 +35,32 @@ class AudioCaptureServiceTest {
 
         @Test
         fun `initial listening state is IDLE`() {
-            val orchestrator = PipelineOrchestrator(
-                scope = kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.Dispatchers.Unconfined)
-            )
+            val orchestrator = PipelineOrchestrator()
             assertEquals(ListeningState.IDLE, orchestrator.listeningState.value)
         }
 
         @Test
         fun `initial vad state is SILENCE`() {
-            val orchestrator = PipelineOrchestrator(
-                scope = kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.Dispatchers.Unconfined)
-            )
+            val orchestrator = PipelineOrchestrator()
             assertEquals(VadState.SILENCE, orchestrator.vadState.value)
         }
 
         @Test
         fun `updateListeningState changes state`() {
-            val orchestrator = PipelineOrchestrator(
-                scope = kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.Dispatchers.Unconfined)
-            )
+            val orchestrator = PipelineOrchestrator()
             orchestrator.updateListeningState(ListeningState.LISTENING)
             assertEquals(ListeningState.LISTENING, orchestrator.listeningState.value)
         }
 
         @Test
         fun `session duration starts at 0`() {
-            val orchestrator = PipelineOrchestrator(
-                scope = kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.Dispatchers.Unconfined)
-            )
+            val orchestrator = PipelineOrchestrator()
             assertEquals(0L, orchestrator.getSessionDurationMs())
         }
 
         @Test
         fun `session duration tracks after LISTENING state`() {
-            val orchestrator = PipelineOrchestrator(
-                scope = kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.Dispatchers.Unconfined)
-            )
+            val orchestrator = PipelineOrchestrator()
             orchestrator.updateListeningState(ListeningState.LISTENING)
             Thread.sleep(50)
             val duration = orchestrator.getSessionDurationMs()
@@ -79,9 +69,7 @@ class AudioCaptureServiceTest {
 
         @Test
         fun `session resets on IDLE`() {
-            val orchestrator = PipelineOrchestrator(
-                scope = kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.Dispatchers.Unconfined)
-            )
+            val orchestrator = PipelineOrchestrator()
             orchestrator.updateListeningState(ListeningState.LISTENING)
             orchestrator.updateListeningState(ListeningState.IDLE)
             assertEquals(0L, orchestrator.getSessionDurationMs())

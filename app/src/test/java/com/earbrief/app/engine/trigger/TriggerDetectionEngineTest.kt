@@ -93,8 +93,10 @@ class TriggerDetectionEngineTest {
     }
 
     private fun createOrchestrator(): PipelineOrchestrator {
-        return PipelineOrchestrator(scope = CoroutineScope(Dispatchers.Unconfined))
+        return PipelineOrchestrator()
     }
+
+    private val backgroundScope = CoroutineScope(Dispatchers.Default)
 
     private fun createUtterance(): Utterance {
         return Utterance(

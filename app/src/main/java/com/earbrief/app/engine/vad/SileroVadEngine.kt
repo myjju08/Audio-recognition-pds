@@ -167,7 +167,7 @@ class SileroVadEngine @Inject constructor(
     }
 
     companion object {
-        private const val MODEL_FILE_NAME = "silero_vad.onnx"
+        private const val MODEL_FILE_NAME = "silero_vad_v5.onnx"
         private const val CONTEXT_SIZE = 64
     }
 }

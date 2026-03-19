@@ -36,6 +36,7 @@ import org.junit.jupiter.api.Test
 
 @DisplayName("TriggerMetrics")
 class TriggerMetricsTest {
+    private val backgroundScope = CoroutineScope(Dispatchers.Default)
 
     @Test
     fun `schedule gap fixture precision and recall stay above threshold`() = runTest {
@@ -154,7 +155,11 @@ class TriggerMetricsTest {
 
         val metrics = measure(fixtures) { fixture ->
             val repository = MetricsCustomKeywordRepository(fixture.keywords)
-            val rule = KeywordInstantTriggerRule(repository, MetricsWhisperGenerator(), backgroundScope)
+            val rule = KeywordInstantTriggerRule(
+                customKeywordRepository = repository,
+                whisperGenerator = MetricsWhisperGenerator(),
+                scope = backgroundScope
+            )
             advanceUntilIdle()
 
             val utterance = Utterance(
@@ -187,7 +192,7 @@ class TriggerMetricsTest {
         advanceUntilIdle()
 
         val eventRepository = MetricsTriggerEventRepository()
-        val orchestrator = PipelineOrchestrator(scope = CoroutineScope(Dispatchers.Unconfined))
+        val orchestrator = PipelineOrchestrator()
         val engine = TriggerDetectionEngine(
             triggerRules = setOf(keywordRule),
             triggerEventRepository = eventRepository,

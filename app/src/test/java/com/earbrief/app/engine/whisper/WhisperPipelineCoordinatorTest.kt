@@ -166,7 +166,7 @@ class WhisperPipelineCoordinatorTest {
     }
 
     private fun createOrchestrator(): PipelineOrchestrator {
-        return PipelineOrchestrator(scope = CoroutineScope(Dispatchers.Unconfined))
+        return PipelineOrchestrator()
     }
 
     private fun createTriggerEvent(whisperText: String): TriggerEvent {

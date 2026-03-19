@@ -25,6 +25,12 @@ android {
         versionName = "1.0.0-alpha"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // APK size optimization
+        ndk {
+            abiFilters += listOf("arm64-v8a")
+        }
+        resourceConfigurations += listOf("ko", "en")
     }
 
     signingConfigs {

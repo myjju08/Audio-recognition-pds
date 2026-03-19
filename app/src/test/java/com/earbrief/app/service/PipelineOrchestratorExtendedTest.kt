@@ -17,9 +17,7 @@ import org.junit.jupiter.api.Test
 class PipelineOrchestratorExtendedTest {
 
     private fun createOrchestrator(): PipelineOrchestrator {
-        return PipelineOrchestrator(
-            scope = CoroutineScope(Dispatchers.Unconfined)
-        )
+        return PipelineOrchestrator()
     }
 
     @Nested
