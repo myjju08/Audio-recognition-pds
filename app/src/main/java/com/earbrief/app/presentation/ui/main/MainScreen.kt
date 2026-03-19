@@ -1,25 +1,35 @@
 package com.earbrief.app.presentation.ui.main
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.earbrief.app.R
 import com.earbrief.app.engine.stt.SttConnectionState
 import com.earbrief.app.presentation.viewmodel.MainViewModel
 
 @Composable
 fun MainScreen(
+    onOpenLog: () -> Unit = {},
     viewModel: MainViewModel = hiltViewModel()
 ) {
     val listeningState by viewModel.listeningState.collectAsState()
@@ -32,45 +42,74 @@ fun MainScreen(
     val sessionId by viewModel.sessionId.collectAsState()
     val recentTriggerEvents by viewModel.recentTriggerEvents.collectAsState()
 
-    Column(
+    var showCards by remember { mutableStateOf(false) }
+    LaunchedEffect(Unit) { showCards = true }
+
+    LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-            .padding(horizontal = 20.dp, vertical = 16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Top
+            .padding(horizontal = 24.dp, vertical = 20.dp),
+        verticalArrangement = Arrangement.spacedBy(20.dp)
     ) {
-        Spacer(modifier = Modifier.height(16.dp))
+        item {
+            Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                androidx.compose.material3.Text(
+                    text = if (listeningState == com.earbrief.app.domain.model.ListeningState.LISTENING) {
+                        stringResource(R.string.main_greeting_active)
+                    } else {
+                        stringResource(R.string.main_greeting_idle)
+                    },
+                    style = androidx.compose.material3.MaterialTheme.typography.headlineLarge,
+                    color = androidx.compose.material3.MaterialTheme.colorScheme.onBackground
+                )
+                androidx.compose.material3.Text(
+                    text = stringResource(R.string.main_subtitle),
+                    style = androidx.compose.material3.MaterialTheme.typography.bodyMedium,
+                    color = androidx.compose.material3.MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                Spacer(modifier = Modifier.height(6.dp))
+            }
+        }
 
-        ListeningStatusCard(
-            listeningState = listeningState,
-            vadState = vadState,
-            speechProbability = speechProbability,
-            sessionDuration = viewModel.getSessionDurationFormatted(),
-            onToggle = viewModel::toggleListening,
-            onStop = viewModel::stopListening
-        )
+        items(
+            listOf("hero", "stats", "whispers", "transcript"),
+            key = { it }
+        ) { key ->
+            val index = listOf("hero", "stats", "whispers", "transcript").indexOf(key)
+            AnimatedVisibility(
+                visible = showCards,
+                enter = fadeIn(animationSpec = tween(350, delayMillis = index * 90)) +
+                    slideInVertically(animationSpec = tween(420, delayMillis = index * 90), initialOffsetY = { it / 6 })
+            ) {
+                when (key) {
+                    "hero" -> ListeningStatusCard(
+                        listeningState = listeningState,
+                        vadState = vadState,
+                        speechProbability = speechProbability,
+                        sessionDuration = viewModel.getSessionDurationFormatted(),
+                        onToggle = viewModel::toggleListening,
+                        onStop = viewModel::stopListening
+                    )
 
-        Spacer(modifier = Modifier.height(24.dp))
+                    "stats" -> QuickStatsCard(
+                        whisperCount = whisperCount,
+                        sessionDuration = viewModel.getSessionDurationFormatted(),
+                        sessionId = sessionId
+                    )
 
-        QuickStatsCard(
-            whisperCount = whisperCount,
-            sessionDuration = viewModel.getSessionDurationFormatted()
-        )
+                    "whispers" -> RecentWhispersCard(
+                        sessionId = sessionId,
+                        triggerEvents = recentTriggerEvents,
+                        onOpenLog = onOpenLog
+                    )
 
-        Spacer(modifier = Modifier.height(24.dp))
-
-        RecentWhispersCard(
-            sessionId = sessionId,
-            triggerEvents = recentTriggerEvents
-        )
-
-        Spacer(modifier = Modifier.height(24.dp))
-
-        TranscriptFeedCard(
-            connectionState = sttConnectionState,
-            interimTranscript = interimTranscript,
-            finalTranscripts = finalTranscripts
-        )
+                    else -> TranscriptFeedCard(
+                        connectionState = sttConnectionState,
+                        interimTranscript = interimTranscript,
+                        finalTranscripts = finalTranscripts
+                    )
+                }
+            }
+        }
     }
 }

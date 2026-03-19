@@ -1,36 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">귀띔</string>
-
     <string name="notification_channel_listening_id">earbrief_listening</string>
     <string name="notification_channel_listening_name">청취 상태</string>
     <string name="notification_channel_listening_desc">귀띔 청취 서비스 알림</string>
-
     <string name="notification_channel_whisper_id">earbrief_whisper</string>
     <string name="notification_channel_whisper_name">귓속말 알림</string>
     <string name="notification_channel_whisper_desc">귓속말 히스토리 알림</string>
-
     <string name="notification_listening_title">🎧 귀띔이 듣고 있어요</string>
     <string name="notification_listening_body">대화를 분석 중입니다. 탭하여 일시정지</string>
     <string name="notification_paused_title">⏸ 귀띔 일시정지</string>
     <string name="notification_paused_body">탭하여 다시 시작</string>
-
     <string name="action_pause">일시정지</string>
     <string name="action_resume">재개</string>
     <string name="action_stop">종료</string>
-
     <string name="listening_status_on">듣는 중</string>
     <string name="listening_status_paused">일시정지</string>
-    <string name="listening_status_off">꺼져 있어요</string>
-
+    <string name="listening_status_off">쉬고 있어요</string>
     <string name="permission_mic_title">마이크 권한이 필요해요</string>
-    <string name="permission_mic_rationale">귀띔은 소리를 녹음하지 않고, 실시간으로 분석만 합니다</string>
+    <string name="permission_mic_rationale">귀띔은 소리를 저장하지 않고, 실시간 흐름만 분석합니다.</string>
     <string name="permission_notification_title">알림 권한이 필요해요</string>
-    <string name="permission_notification_rationale">청취 상태를 알려드리기 위해 알림 권한이 필요합니다</string>
-
+    <string name="permission_notification_rationale">청취 상태와 귓속말 출력을 알려드리기 위해 필요합니다.</string>
+    <string name="permission_grant">허용</string>
+    <string name="permission_grant_mic">마이크 권한 허용</string>
+    <string name="permission_grant_notification">알림 권한 허용</string>
     <string name="nav_home">홈</string>
     <string name="nav_log">로그</string>
     <string name="nav_knowledge">지식</string>
     <string name="nav_profile">프로필</string>
     <string name="nav_settings">설정</string>
+    <string name="main_greeting_active">귀띔이 듣고 있어요</string>
+    <string name="main_greeting_idle">오늘도 조용히 준비되어 있어요</string>
+    <string name="main_subtitle">대화를 따라가며 필요한 순간에만 부드럽게 귀띔합니다.</string>
+    <string name="main_toggle_listening">청취 토글</string>
+    <string name="main_status_stopping">정리 중이에요</string>
+    <string name="main_voice_detected">음성 감지 중</string>
+    <string name="main_voice_waiting">침묵 대기 중</string>
+    <string name="main_stats_title">세션 요약</string>
+    <string name="main_stats_listening">청취 시간</string>
+    <string name="main_stats_whispers">귓속말</string>
+    <string name="main_stats_session">세션</string>
+    <string name="main_whispers_title">최근 귓속말</string>
+    <string name="main_whispers_empty">아직 귓속말이 없어요</string>
+    <string name="main_whispers_more">전체 기록 보기</string>
+    <string name="main_session_prefix">세션 %1$s</string>
+    <string name="main_transcript_title">실시간 전사</string>
+    <string name="main_transcript_empty">대화를 기다리는 중...</string>
+    <string name="stt_connected">Deepgram 연결됨</string>
+    <string name="stt_connecting">Deepgram 연결 중...</string>
+    <string name="stt_reconnecting">Deepgram 재연결 중...</string>
+    <string name="stt_failed">Deepgram 연결 실패</string>
+    <string name="stt_disconnected">Deepgram 대기 중</string>
+    <string name="log_title">귓속말 기록</string>
+    <string name="log_empty">아직 기록이 없어요</string>
+    <string name="log_source_label">원문</string>
+    <string name="log_entities_label">감지된 엔티티</string>
+    <string name="filter_all">전체</string>
+    <string name="filter_schedule">일정</string>
+    <string name="filter_silence">침묵</string>
+    <string name="filter_keyword">키워드</string>
+    <string name="onboarding_welcome_title">귀띔에 오신 것을 환영합니다</string>
+    <string name="onboarding_welcome_body">당신의 대화 흐름을 읽고, 필요한 순간에만 조용히 도와주는 AI 이어 어시스턴트입니다.</string>
+    <string name="onboarding_features_title">대화의 결을 놓치지 않도록</string>
+    <string name="onboarding_features_body">실시간 분석, 스마트 트리거, 그리고 자연스러운 귓속말 출력을 하나의 흐름으로 제공합니다.</string>
+    <string name="onboarding_permissions_title">권한을 준비해 주세요</string>
+    <string name="onboarding_permission_mic">마이크 — 대화를 감지하기 위한 필수 권한</string>
+    <string name="onboarding_permission_notification">알림 — 서비스 상태를 유지하기 위한 권장 권한</string>
+    <string name="onboarding_permission_calendar">캘린더 — 일정 갭 제안을 위한 선택 권한</string>
+    <string name="onboarding_battery_title">배터리 최적화를 해제해 주세요</string>
+    <string name="onboarding_battery_body">백그라운드 청취와 귓속말 출력을 안정적으로 유지하려면 배터리 제한을 풀어주는 것이 좋습니다.</string>
+    <string name="onboarding_battery_button">배터리 최적화 해제</string>
+    <string name="onboarding_skip">건너뛰기</string>
+    <string name="onboarding_next">다음</string>
+    <string name="onboarding_start">시작하기</string>
+    <string name="coming_soon_knowledge">지식 화면은 준비 중이에요</string>
+    <string name="coming_soon_profile">프로필 화면은 준비 중이에요</string>
+    <string name="coming_soon_settings">설정 화면은 준비 중이에요</string>
 </resources>

@@ -2,27 +2,36 @@ package com.earbrief.app.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
-val EarBriefBlue = Color(0xFF4A90D9)
-val EarBriefBlueDark = Color(0xFF3A73B0)
-val EarBriefBlueLight = Color(0xFF7AB3F0)
+val MidnightBackground = Color(0xFF0D0F1A)
+val MidnightSurface = Color(0xFF151829)
+val MidnightSurfaceRaised = Color(0xFF1E2235)
+val MidnightOutline = Color(0xFF2D3250)
 
-val AccentOrange = Color(0xFFFF8C42)
-val AccentOrangeDark = Color(0xFFCC6F35)
+val WhisperAmber = Color(0xFFF5A623)
+val WhisperAmberContainer = Color(0xFF2A1F0A)
+val WhisperPeriwinkle = Color(0xFF7B8CDE)
+val WhisperPeriwinkleContainer = Color(0xFF1A1D3A)
+val WhisperMint = Color(0xFF5ECFB1)
+val WhisperCoral = Color(0xFFFF6B6B)
 
-val ErrorRed = Color(0xFFE53935)
-val WarningYellow = Color(0xFFFFB300)
-val SuccessGreen = Color(0xFF43A047)
+val MidnightOnBackground = Color(0xFFE8EAF6)
+val MidnightOnSurface = Color(0xFFC5CAE9)
+val MidnightOnSurfaceMuted = Color(0xFF7986CB)
 
-val DarkBackground = Color(0xFF0D1117)
-val DarkSurface = Color(0xFF161B22)
-val DarkSurfaceVariant = Color(0xFF21262D)
-val DarkOnBackground = Color(0xFFF0F6FC)
-val DarkOnSurface = Color(0xFFC9D1D9)
-val DarkOnSurfaceVariant = Color(0xFF8B949E)
+val DawnBackground = Color(0xFFF8F7F4)
+val DawnSurface = Color(0xFFFFFFFF)
+val DawnSurfaceVariant = Color(0xFFF0EDE8)
+val DawnOutline = Color(0xFFD9D3CA)
+val DawnPrimary = Color(0xFFD4841A)
+val DawnPrimaryContainer = Color(0xFFFFF3E0)
+val DawnSecondary = Color(0xFF4A5AAD)
+val DawnTertiary = Color(0xFF2E9E7F)
+val DawnError = Color(0xFFD32F2F)
+val DawnOnBackground = Color(0xFF1A1B2E)
+val DawnOnSurface = Color(0xFF2D2E42)
+val DawnOnSurfaceMuted = Color(0xFF6B6E8A)
 
-val LightBackground = Color(0xFFF8F9FA)
-val LightSurface = Color(0xFFFFFFFF)
-val LightSurfaceVariant = Color(0xFFF0F2F5)
-val LightOnBackground = Color(0xFF1A1A1A)
-val LightOnSurface = Color(0xFF24292F)
-val LightOnSurfaceVariant = Color(0xFF57606A)
+val SpeechActive = WhisperMint
+val SilenceIdle = MidnightOnSurfaceMuted
+val WhisperGold = WhisperAmber
+val DangerAlert = WhisperCoral

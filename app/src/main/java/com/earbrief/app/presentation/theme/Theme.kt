@@ -12,48 +12,62 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
-    primary = EarBriefBlue,
-    onPrimary = DarkOnBackground,
-    primaryContainer = EarBriefBlueDark,
-    secondary = AccentOrange,
-    onSecondary = DarkOnBackground,
-    background = DarkBackground,
-    onBackground = DarkOnBackground,
-    surface = DarkSurface,
-    onSurface = DarkOnSurface,
-    surfaceVariant = DarkSurfaceVariant,
-    onSurfaceVariant = DarkOnSurfaceVariant,
-    error = ErrorRed
+    primary = WhisperAmber,
+    onPrimary = MidnightBackground,
+    primaryContainer = WhisperAmberContainer,
+    onPrimaryContainer = WhisperAmber,
+    secondary = WhisperPeriwinkle,
+    onSecondary = MidnightBackground,
+    secondaryContainer = WhisperPeriwinkleContainer,
+    onSecondaryContainer = MidnightOnBackground,
+    tertiary = WhisperMint,
+    onTertiary = MidnightBackground,
+    background = MidnightBackground,
+    onBackground = MidnightOnBackground,
+    surface = MidnightSurface,
+    onSurface = MidnightOnSurface,
+    surfaceVariant = MidnightSurfaceRaised,
+    onSurfaceVariant = MidnightOnSurfaceMuted,
+    outline = MidnightOutline,
+    error = WhisperCoral,
+    onError = MidnightBackground
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = EarBriefBlue,
-    onPrimary = LightBackground,
-    primaryContainer = EarBriefBlueLight,
-    secondary = AccentOrange,
-    onSecondary = LightBackground,
-    background = LightBackground,
-    onBackground = LightOnBackground,
-    surface = LightSurface,
-    onSurface = LightOnSurface,
-    surfaceVariant = LightSurfaceVariant,
-    onSurfaceVariant = LightOnSurfaceVariant,
-    error = ErrorRed
+    primary = DawnPrimary,
+    onPrimary = DawnBackground,
+    primaryContainer = DawnPrimaryContainer,
+    onPrimaryContainer = DawnPrimary,
+    secondary = DawnSecondary,
+    onSecondary = DawnBackground,
+    tertiary = DawnTertiary,
+    onTertiary = DawnBackground,
+    background = DawnBackground,
+    onBackground = DawnOnBackground,
+    surface = DawnSurface,
+    onSurface = DawnOnSurface,
+    surfaceVariant = DawnSurfaceVariant,
+    onSurfaceVariant = DawnOnSurfaceMuted,
+    outline = DawnOutline,
+    error = DawnError,
+    onError = DawnBackground
 )
 
 @Composable
 fun EarBriefTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
+    darkTheme: Boolean = true,
     content: @Composable () -> Unit
 ) {
-    val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
-
+    val colorScheme = if (darkTheme || isSystemInDarkTheme()) DarkColorScheme else LightColorScheme
     val view = LocalView.current
+
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
             window.statusBarColor = colorScheme.background.toArgb()
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
+            window.navigationBarColor = colorScheme.background.toArgb()
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = false
+            WindowCompat.getInsetsController(window, view).isAppearanceLightNavigationBars = false
         }
     }
 
